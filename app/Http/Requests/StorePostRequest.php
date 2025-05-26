@@ -27,7 +27,7 @@ class StorePostRequest extends FormRequest
             'content' => ['required','string'],
             'image' => ['image', 'mimes:png,jpg,jpeg,gif'],
             'status' => ['required', Rule::in(['draft','scheduled','published'])],
-            'scheduled_time' => ["date_format:Y-m-d H:i:s", "after:now", "required_if:status,scheduled"],
+            'scheduled_time' => ["date_format:Y-m-d H:i:s", "after:now", "required_if:status,scheduled", "nullable"],
             'platforms' => ['required', 'array', 'min:1'],
             'platforms.*' => ['required', 'numeric', 'exists:platforms,id']
         ];

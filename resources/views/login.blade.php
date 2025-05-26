@@ -280,10 +280,7 @@
                 <div class="error-message" id="password-error"></div>
             </div>
 
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="remember" name="remember">
-                <label for="remember">Remember me</label>
-            </div>
+           
 
             <button type="submit" class="btn-login" id="loginBtn">
                 <span class="btn-text">Sign In</span>
