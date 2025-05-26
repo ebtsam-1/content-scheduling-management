@@ -75,4 +75,9 @@ class FrontendPostController extends Controller
 
         return view('posts.analytics', compact('platforms', 'recentPosts', 'analytics'));
     }
+
+    public function home()
+    {
+        return view('home');
+    }
 }

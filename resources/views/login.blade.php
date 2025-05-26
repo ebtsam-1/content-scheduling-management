@@ -367,7 +367,7 @@
                     
                     // Redirect after a short delay
                     setTimeout(() => {
-                        window.location.href = data.redirect || '{{ route("dashboard") }}';
+                        window.location.href = data.redirect || '{{ route("home") }}';
                     }, 1000);
                     
                 } else {

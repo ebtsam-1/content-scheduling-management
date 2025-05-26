@@ -16,9 +16,6 @@ use App\Http\Controllers\FrontendPostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginView'])->name('login');
@@ -28,10 +25,13 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::group(['middleware' => 'auth:web'], function(){
-    Route::get('/posts/create', [FrontendPostController::class, 'create']);
+    Route::get('/posts/create', [FrontendPostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class,'store'])->name('posts.store');
     Route::get('/dashboard', [FrontendPostController::class,'viewDashboard'])->name('dashboard');
     Route::get('/posts-analytics', [FrontendPostController::class,'analytics'])->name('analytics');
+    Route::get('/home', [FrontendPostController::class,'home'])->name('home');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 });
 
 

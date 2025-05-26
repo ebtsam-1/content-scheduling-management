@@ -39,7 +39,7 @@ class AuthController extends Controller
             
             return [
                 'user' => $user,
-                'redirect' => route('dashboard'),
+                'redirect' => route('home'),
             ];
         } else {
             // For Api authentication
@@ -54,10 +54,17 @@ class AuthController extends Controller
         
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out']);
+        $guard = $this->getGuard($request);
+        if ($guard === 'web') {
+            Auth::logout();
+            return redirect()->route('login');
+        } else {
+            Auth::user()->currentAccessToken()->delete();
+            return response()->json(['message' => 'Logged out']);
+        }
+
     }
 
 
